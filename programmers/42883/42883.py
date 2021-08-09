@@ -11,9 +11,7 @@ def solution(number, k):
         stack.append(number[i])
 
     # 만약 k가 0이 아니라면, 남은 부분은 삭제
-    stack = stack[:-k] if k != 0 else stack
-
-    return ''.join(stack)
+    return ''.join(stack[:-k]) if k != 0 else ''.join(stack)
 
 
 if __name__ == '__main__':
