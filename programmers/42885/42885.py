@@ -1,6 +1,13 @@
 def solution(people, limit):
+    people.sort()
+    boat = people[0]
     answer = 0
-    return answer
+
+    for person in people[1:]:
+        if boat + person <= limit:
+            pass
+
+    return answer + 1
 
 
 if __name__ == '__main__':
