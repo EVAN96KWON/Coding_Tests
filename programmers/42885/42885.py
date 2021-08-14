@@ -1,13 +1,12 @@
 def solution(people, limit):
-    people.sort()
-    boat = people[0]
     answer = 0
-
-    for person in people[1:]:
-        if boat + person <= limit:
-            pass
-
-    return answer + 1
+    people.sort()
+    i, j = 0, len(people) - 1
+    while i <= j:
+        answer += 1
+        i += 1 if people[i] + people[j] <= limit else 0
+        j -= 1
+    return answer
 
 
 if __name__ == '__main__':
