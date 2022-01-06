@@ -1,6 +1,7 @@
 import sys
 
 
+# check
 def check(N, list, s):
     for i in range(N):
         for j in range(i + 1, N):
