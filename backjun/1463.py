@@ -17,3 +17,4 @@ if __name__ == '__main__':
     X = int(input())
     arr = init_arr(X)
     print(arr[X])
+    #1463
