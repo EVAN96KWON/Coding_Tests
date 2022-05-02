@@ -1,8 +1,5 @@
 def solution(n, arr1, arr2):
-    result = [''.join(
-        ['#' if k == '1' else ' ' for j in str(bin(i[0] | i[1]))[2:].rjust(n, '0') for k in j]
-    ) for i in zip(arr1, arr2)]
-    return result
+    return [''.join([bin(i[0] | i[1])[2:].rjust(n, '0').replace('1', '#').replace('0', ' ')]) for i in zip(arr1, arr2)]
 
 
 if __name__ == '__main__':
