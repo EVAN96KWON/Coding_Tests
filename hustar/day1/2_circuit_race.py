@@ -11,8 +11,9 @@ def main():
             else:
                 if queue[0] == car:
                     queue.popleft()
+                else:
+                    break
 
-        print(queue)
         print('YES') if queue else print('NO')
 
 
