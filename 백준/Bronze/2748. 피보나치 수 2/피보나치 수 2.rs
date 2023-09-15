@@ -1,25 +1,24 @@
-fn fib(n: usize) -> usize {
-    let mut a = 1;
-    let mut b = 1;
-    let mut c = 0;
-
-    for _ in 2..n {
-        c = a + b;
-        a = b;
-        b = c;
+fn fib(n: u8) -> u64 {
+    if n <= 1 {
+        return n as u64;
     }
 
-    c
+    let mut prev = 0;
+    let mut cur = 1;
+
+    for _ in 2..=n {
+        let next = prev + cur;
+        prev = cur;
+        cur = next;
+    }
+
+    cur
 }
 
 fn main() {
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
-    let n: usize = input.trim().parse().unwrap();
+    let n: u8 = input.trim().parse().unwrap();
 
-    match n {
-        1 => println!("1"),
-        2 => println!("1"),
-        _ => println!("{}", fib(n)),
-    }
+    println!("{}", fib(n))
 }
