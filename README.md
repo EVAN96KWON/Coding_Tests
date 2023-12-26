@@ -1,2 +1,2 @@
-# Coding_Tests
-Solutions I Solved is here.
+# Coding Test
+Solves of Leetcode, Baekjun, and Programmers.
