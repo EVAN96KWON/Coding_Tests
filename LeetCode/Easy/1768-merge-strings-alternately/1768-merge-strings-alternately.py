@@ -9,6 +9,4 @@ class Solution:
             word.append(word1.popleft())
             word.append(word2.popleft())
 
-        word = word + word1 + word2
-
-        return "".join(word)
+        return "".join(word + word1 + word2)
