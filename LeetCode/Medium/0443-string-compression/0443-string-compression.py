@@ -1,19 +1,23 @@
+from collections import deque
+
+
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        compressed = []
-        while chars:
-            c = chars.pop(0)
+        stack = deque(chars)
+        compressed = deque()
+        while stack:
+            c = stack.popleft()
             compressed.append(c)
 
             cnt = 1
-            while chars and chars[0] == c:
+            while stack and stack[0] == c:
                 cnt += 1
-                chars.pop(0)
+                stack.popleft()
 
             if cnt == 1:
                 continue
 
             compressed.extend(str(cnt))
 
-        chars[:] = compressed
+        chars[:] = list(compressed)
         return len(chars)
