@@ -6,8 +6,8 @@ impl Solution {
         let mut rad = VecDeque::new();
         let mut dir = VecDeque::new();
 
-        for i in 0..n {
-            match senate.chars().nth(i).unwrap() {
+        for (i, c) in senate.chars().enumerate() {
+            match c {
                 'R' => rad.push_back(i),
                 'D' => dir.push_back(i),
                 _ => panic!("invalid input"),
@@ -25,9 +25,9 @@ impl Solution {
         }
 
         if rad.is_empty() {
-            return "Dire".to_string();
+            "Dire".to_string()
         } else {
-            return "Radiant".to_string();
+            "Radiant".to_string()
         }
     }
 }
