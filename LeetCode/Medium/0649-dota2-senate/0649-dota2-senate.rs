@@ -24,10 +24,10 @@ impl Solution {
             }
         }
 
-        if rad.is_empty() {
-            "Dire".to_string()
-        } else {
-            "Radiant".to_string()
+        match (rad.is_empty(), dir.is_empty()) {
+            (true, false) => "Dire".to_string(),
+            (false, true) => "Radiant".to_string(),
+            _ => panic!("invalid input"),
         }
     }
 }
