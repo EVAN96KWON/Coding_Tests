@@ -10,11 +10,9 @@ class Solution:
             if not node:
                 return 0
 
-            if node.val:
-                if node.val >= depth:
-                    return 1 + dfs(node.left, node.val) + dfs(node.right, node.val)
-                else:
-                    return dfs(node.left, depth) + dfs(node.right, depth)
+            if node.val and node.val >= depth:
+                return 1 + dfs(node.left, node.val) + dfs(node.right, node.val)
             return dfs(node.left, depth) + dfs(node.right, depth)
+
 
         return dfs(root, root.val)
