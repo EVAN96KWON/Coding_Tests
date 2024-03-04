@@ -6,13 +6,18 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        res = []
         if not root:
-            return res
-        queue = [root]
-        while queue:
-            res.append(queue[-1].val)
-            queue = [
-                child for node in queue for child in (node.left, node.right) if child
-            ]
-        return res
+            return []
+        
+        hashmap = {} # k: level, v: node
+
+        def dfs(node, level):
+            if not node:
+                return
+            hashmap[level] = node.val
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+
+        dfs(root, 0)
+
+        return list(hashmap.values())
