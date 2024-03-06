@@ -1,10 +1,7 @@
-import math
-
-
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         ans = 0
-        arrow = -math.inf
+        arrow = intervals.pop(0)[1]
         for s, e in sorted(intervals, key=lambda x: x[1]):
             if s >= arrow:
                 arrow = e
