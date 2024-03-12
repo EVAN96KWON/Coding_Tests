@@ -2,27 +2,23 @@ impl Solution {
     pub fn find_circle_num(is_connected: Vec<Vec<i32>>) -> i32 {
         let mut visited = vec![false; is_connected.len()];
         let mut count = 0;
-        let mut queue = vec![];
 
         for i in 0..is_connected.len() {
             if !visited[i] {
-                count += 1;
-                queue.push(i);
-            }
-
-            while !queue.is_empty() {
-                let j = queue.pop().unwrap();
-                visited[j] = true;
-
-                for k in 0..is_connected.len() {
-                    if is_connected[j][k] == 1 && !visited[k] {
-                        visited[k] = true;
-                        queue.push(k);
-                    }
-                }
+                Self::dfs(&is_connected, &mut visited, i);
+                count += 1
             }
         }
-
         count
     }
+
+    fn dfs(is_connected: &Vec<Vec<i32>>, visited: &mut Vec<bool>, i: usize) {
+        visited[i] = true;
+        for (n, &c) in is_connected[i].iter().enumerate() {
+            if c == 1 && !visited[n] {
+                Self::dfs(is_connected, visited, n);
+            }
+        }
+    }
 }
+
