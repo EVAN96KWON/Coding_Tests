@@ -12,10 +12,7 @@ class Solution:
         p: TreeNode,
         q: TreeNode,
     ) -> TreeNode:
-        if not root:
-            return
-
-        if root in [p, q]:
+        if not root or root in [p, q]:
             return root
 
         left, right = (
