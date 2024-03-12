@@ -16,7 +16,7 @@ class Solution:
             return
 
         if root in [p, q]:
-            return node
+            return root
 
         left, right = (
             self.lowestCommonAncestor(root.left, p, q),
@@ -27,5 +27,3 @@ class Solution:
             return root
 
         return left or right
-
-
