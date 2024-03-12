@@ -1,6 +1,6 @@
 from itertools import combinations
 from collections import defaultdict
-from bisect import bisect_left
+from bisect import bisect_left, insort
 
 
 def solution(information, queries):
@@ -12,18 +12,11 @@ def solution(information, queries):
         score = int(info.pop())
         for i in range(5):
             for c in combinations(info, i):
-                info_dict[c].append(score)
-
-    for info in info_dict.values():
-        info.sort()
+                insort(info_dict[c], score)
 
     for query in queries:
-        query = query.replace(" and ", " ").split()
-        query, query_score = (
-            tuple(filter(lambda x: x != "-", query[:-1])),
-            int(query[-1]),
-        )
-
+        query = query.replace(" and ", " ").replace("-", "").split()
+        query, query_score = tuple(query[:-1]), int(query[-1])
         answer.append(
             len(info_dict[query]) - bisect_left(info_dict[query], query_score)
         )
