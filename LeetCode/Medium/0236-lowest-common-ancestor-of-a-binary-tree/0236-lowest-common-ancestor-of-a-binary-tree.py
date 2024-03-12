@@ -19,12 +19,13 @@ class Solution:
             return node
 
         left, right = (
-            self.lowestCommonAncestor(node.left),
-            self.lowestCommonAncestor(node.right),
+            self.lowestCommonAncestor(root.left, p, q),
+            self.lowestCommonAncestor(root.right, p, q),
         )
 
         if left and right:
             return root
 
         return left or right
+
 
