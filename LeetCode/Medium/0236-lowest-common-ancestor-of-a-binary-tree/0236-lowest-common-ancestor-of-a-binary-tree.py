@@ -12,19 +12,19 @@ class Solution:
         p: TreeNode,
         q: TreeNode,
     ) -> TreeNode:
-        def lca(node: Optional[TreeNode]) -> Optional[TreeNode]:
-            if not node:
-                return
+        if not root:
+            return
 
-            if node in [p, q]:
-                return node
+        if root in [p, q]:
+            return node
 
-            left, right = lca(node.left), lca(node.right)
+        left, right = (
+            self.lowestCommonAncestor(node.left),
+            self.lowestCommonAncestor(node.right),
+        )
 
-            if left and right:
-                return node
+        if left and right:
+            return root
 
-            return left or right
-
-        return lca(root)
+        return left or right
 
