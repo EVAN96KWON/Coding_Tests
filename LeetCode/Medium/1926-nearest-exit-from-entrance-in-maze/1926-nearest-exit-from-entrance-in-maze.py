@@ -2,9 +2,8 @@ class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         m, n = len(maze), len(maze[0])
         start_row, start_col = entrance
-        queue: deque[tuple[int, int, int]] = deque([(start_row, start_col, 0)])
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
         maze[start_row][start_col] = "+"
+        queue: deque[tuple[int, int, int]] = deque([(start_row, start_col, 0)])
 
         while queue:
             row, col, steps = queue.popleft()
@@ -16,7 +15,7 @@ class Solution:
                 if maze[row][col] != "+":
                     return steps
 
-            for dx, dy in directions:
+            for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
                 new_row, new_col = row + dx, col + dy
 
                 if (
