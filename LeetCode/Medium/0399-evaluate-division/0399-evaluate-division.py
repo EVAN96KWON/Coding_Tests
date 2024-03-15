@@ -1,6 +1,9 @@
 class Solution:
     def calcEquation(
-        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
+        self,
+        equations: List[List[str]],
+        values: List[float],
+        queries: List[List[str]],
     ) -> List[float]:
         self.graph = defaultdict(dict)
 
@@ -8,14 +11,7 @@ class Solution:
             self.graph[i][j] = v
             self.graph[j][i] = 1 / v
 
-        answers = []
-
-        for i, j in queries:
-            visited = set()
-            bfs = self.bfs(i, j, visited)
-            answers.append(bfs if bfs else -1.0)
-
-        return answers
+        return [self.bfs(i, j, set()) or -1.0 for i, j in queries]
 
     def bfs(self, start, end, visited):
         if start not in self.graph or end not in self.graph:
