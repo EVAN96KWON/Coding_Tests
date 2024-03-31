@@ -1,3 +1,3 @@
 def solution(arr, divisor):
-    ret = list(filter(lambda x: x % divisor == 0, arr))
-    return [-1] if not ret else sorted(ret)
+    return [n for n in sorted(arr) if n % divisor == 0] or [-1]
+
