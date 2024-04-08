@@ -8,7 +8,6 @@ def solution(A, B):
     while B:
         if A[0] < B[0]:
             cnt += 1
-            A.popleft(), B.popleft()
-        else:
-            B.popleft()
+            A.popleft()
+        B.popleft()
     return cnt
