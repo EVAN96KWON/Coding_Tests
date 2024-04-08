@@ -1,13 +1,7 @@
-def solution(n):
-    def backtrack(current, open_count, close_count):
-        if open_count == close_count == n:
-            result.append(current)
-            return
-        if open_count < n:
-            backtrack(current + "(", open_count + 1, close_count)
-        if close_count < open_count:
-            backtrack(current + ")", open_count, close_count + 1)
+CATALAN = [1]
+for i in range(1, 15):
+    CATALAN.append(sum(CATALAN[j] * CATALAN[i - j - 1] for j in range(i)))
 
-    result = []
-    backtrack("", 0, 0)
-    return len(result)
+
+def solution(n):
+    return CATALAN[n]
