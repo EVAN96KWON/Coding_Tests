@@ -4,35 +4,26 @@ from collections import defaultdict
 input = sys.stdin.readline
 
 
-def is_cut_vertex(tree, vertex: int) -> None:
-    if len(tree[vertex]) < 2:
-        print("no")
-    else:
-        print("yes")
-
-
-def is_bridge(tree, edge) -> None:
-    print("yes")
+def is_cut_vertex(graph, v):
+    return len(graph[v]) >= 2
 
 
 def main():
-    tree = defaultdict(list)
-    edges = [(0, 0)]
+    graph = defaultdict(list)
 
     N = int(input())
     for _ in range(N - 1):
         a, b = map(int, input().split())
-        tree[a].append(b)
-        tree[b].append(a)
-        edges.append((a, b))
+        graph[a].append(b)
+        graph[b].append(a)
 
     q = int(input())
     for _ in range(q):
         t, k = map(int, input().split())
         if t == 1:
-            is_cut_vertex(tree, k)
+            print("yes" if is_cut_vertex(graph, k) else "no")
         else:
-            is_bridge(tree, edges[k])
+            print("yes")
 
 
 if __name__ == "__main__":
