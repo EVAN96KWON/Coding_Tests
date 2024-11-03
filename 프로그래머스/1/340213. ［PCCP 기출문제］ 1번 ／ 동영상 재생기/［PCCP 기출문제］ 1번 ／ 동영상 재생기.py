@@ -21,20 +21,14 @@ class Player:
                 self.do_next()
             elif command == "prev":
                 self.do_prev()
-            self.skip_op()
+        self.skip_op()
         return self.__s2mmss__(self.pos)
 
     def do_next(self) -> None:
-        if self.pos + 10 > self.video_len:
-            self.pos = self.video_len
-        else:
-            self.pos += 10
+        self.pos = min(self.pos + 10, self.video_len)
 
     def do_prev(self) -> None:
-        if self.pos - 10 < 0:
-            self.pos = 0
-        else:
-            self.pos -= 10
+        self.pos = max(self.pos - 10, 0)
 
     def skip_op(self) -> None:
         if self.pos in range(*self.op):
